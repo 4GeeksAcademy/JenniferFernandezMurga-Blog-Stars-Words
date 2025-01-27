@@ -9,7 +9,7 @@ export const Home = () => {
 	const { store, actions } = useContext(Context); 
 
 			useEffect(()=>{
-				actions.getCharacters()
+				actions.getcharacters()
 				},[])
 
 			useEffect(()=>{
@@ -28,7 +28,7 @@ export const Home = () => {
 
 		<div className="vista">
 
-			<h1 className="Characters">Characters</h1>
+			<h1 className="characters">characters</h1>
 			<div className="cards d-flex overflow-auto">
 			
 			{store.characters.map((characters, index) => {

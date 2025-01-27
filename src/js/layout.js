@@ -24,10 +24,8 @@ const Layout = () => {
 					<Navbar />
 					<Routes>
 						<Route path="/" element={<Home />} />
-						{/* <Route path="/demo" element={<Demo />} />
-
-						<Route path="/single/:theid" element={<Single />} /> */}
-						<Route path="/details/:id" element={<InfoItems />} />
+						<Route path="/:category/:id" element={<InfoItems />} />
+						{/* //el useParams coge la información de la url esta*/}
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
 					{/* <Footer /> */}

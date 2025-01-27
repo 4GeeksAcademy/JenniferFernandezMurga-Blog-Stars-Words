@@ -4,10 +4,15 @@ const getState = ({ getStore, getActions, setStore }) => {
            characters:[],
 		   planets:[],
 		   vehicles:[],
-		   charactersDetails:[],
-			planetsDetails:[],
-		   vehiclesDetails:[],
+		   charactersDetails:{},
+			planetsDetails:{},
+		   vehiclesDetails:{},
 		//    icons:[],
+		personData:[],
+		// infoDetails:{},
+		// category:[characters,characters,planets,vehicles],
+		
+		
 
 		},
 		actions: {
@@ -16,7 +21,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
-			getCharacters: () => {
+			
+			addFavorite: (name) => {
+				console.log(`${name} ha sido ${name ? 'añadido' : 'eliminado'} de favoritos`);
+				  // Aquí puedes agregar lógica para manejar la lista de favoritos
+				}
+				,
+
+
+			getcharacters: () => {
 				const requestOptions = {
 					method: "GET",
 					redirect: "follow"
@@ -56,47 +69,102 @@ const getState = ({ getStore, getActions, setStore }) => {
 						.catch((error) => console.error(error));
 				},
 
-			getCharactersDetails: () =>{
-				const requestOptions = {
-					method: "GET",
-					redirect: "follow"
-				  };
+				//Este fetch envía la información a la CardInfo de los 3 grupos
+
+				//   getInfoDetails: async ()=>{
+				// 	const requestOptions = {
+				// 	  method: "GET",
+				// 	  redirect: "follow"
+				// 	};
+					
+				// 	try {
+				// 	  const response = await fetch(`https://www.swapi.tech/api/${category}/${id}`, requestOptions);
+				// 	  const data = await response.json()
+				// 	setInfoDetails(data.result)
+				//   console.log(data.result);
+				// 	} catch (error) {
+				// 	console.error(error);
+				//    };
+				//   }
+					// ,
+
+
+
+				//NO ME DEJA AÑADIRLO AQUÍ PORQUE CATEGORY NO ESTÁ DEFINIDO. COMO DEBERIA AÑADIRLO????
+					// getInfoDetails: async ()=>{
+					// 	const requestOptions = {
+					// 	  method: "GET",
+					// 	  redirect: "follow"
+					// 	};
+						
+					// 	try {
+					// 	  const response = await fetch(`https://www.swapi.tech/api/${category}/${id}`, requestOptions);
+					// 	  const data = await response.json()
+					// 	setInfoDetails(data.result)
+					// 	console.log(data.result);
+					// 	} catch (error) {
+					// 	console.error(error);
+					// 	 };
+					// 	}
+					
+					// 	,
+				//   ,
+				//   fetchPersonData: async () => {
+			
+				// 	try {
+				// 	  const response = await fetch(`https://www.swapi.tech/api/characters/${id}`);
+				// 	  if (!response.ok) {
+				// 		throw new Error(`HTTP error! status: ${response.status}`);
+				// 	  }
+				// 	  const data = await response.json();
+				// 	  setPersonData(data);
+				// 	  console.log(data); // Para ver la respuesta en la consola
+				// 	} catch (error) {
+				// 	  console.error("Error fetching data:", error);
+				// 	}
+				//   },
 				  
-				  fetch("https://www.swapi.tech/api/people/", requestOptions)
-					.then((response) => response.json())
-					.then((data) => setStore({charactersDetails:data.results}))
-					.catch((error) => console.error(error));
-
-
-			},
-
-			getPlanetsDetails: () =>{
-				const requestOptions = {
-					method: "GET",
-					redirect: "follow"
-				  };
+			// getInfocharacters: () =>{
+			// 	const requestOptions = {
+			// 		method: "GET",
+			// 		redirect: "follow"
+			// 	  };
 				  
-				  fetch("https://www.swapi.tech/api/planets/:id", requestOptions)
-					.then((response) => response.json())
-					.then((data) => setStore({planetsDetails:data.results}))
-					.catch((error) => console.error(error));
+			// 	  fetch(("https://www.swapi.tech/api/characters/"+uid), requestOptions)
+			// 		.then((response) => response.json())
+			// 		.then((data) => setStore({charactersDetails:data.results}))
+			// 		.catch((error) => console.error(error));
 
 
-			},
+			// },
 
-			getVehiclesDetails: () =>{
-				const requestOptions = {
-					method: "GET",
-					redirect: "follow"
-				  };
+			// getPlanetsDetails: () =>{
+			// 	const requestOptions = {
+			// 		method: "GET",
+			// 		redirect: "follow"
+			// 	  };
 				  
-				  fetch("https://www.swapi.tech/api/vehicles/", requestOptions)
-					.then((response) => response.json())
-					.then((data) => setStore({vehiclesDetails:data.results}))
-					.catch((error) => console.error(error));
+			// 	  fetch("https://www.swapi.tech/api/planets/:id", requestOptions)
+			// 		.then((response) => response.json())
+			// 		.then((data) => setStore({planetsDetails:data.results}))
+			// 		.catch((error) => console.error(error));
 
 
-			},
+			// },
+
+			// getVehiclesDetails: () =>{
+			// 	const requestOptions = {
+			// 		method: "GET",
+			// 		redirect: "follow"
+			// 	  };
+				  
+			// 	  fetch("https://www.swapi.tech/api/vehicles/", requestOptions)
+			// 		.then((response) => response.json())
+			// 		.then((data) => setStore({vehiclesDetails:data.results}))
+			// 		.catch((error) => console.error(error));
+
+
+			// },
 
 
 
