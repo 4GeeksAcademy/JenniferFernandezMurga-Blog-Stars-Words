@@ -4,13 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
            characters:[],
 		   planets:[],
 		   vehicles:[],
-		   charactersDetails:{},
-			planetsDetails:{},
-		   vehiclesDetails:{},
-		//    icons:[],
-		personData:[],
-		// infoDetails:{},
-		// category:[characters,characters,planets,vehicles],
+		favorite:[],
 		
 		
 
@@ -22,11 +16,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			
-			addFavorite: (name) => {
-				console.log(`${name} ha sido ${name ? 'añadido' : 'eliminado'} de favoritos`);
-				  // Aquí puedes agregar lógica para manejar la lista de favoritos
-				}
-				,
+			// addFavorite: (name) => {
+			// 	console.log(`${name} ha sido ${name ? 'añadido' : 'eliminado'} de favoritos`);
+			// 	  // Aquí puedes agregar lógica para manejar la lista de favoritos
+			// 	}
+				
 
 
 			getcharacters: () => {

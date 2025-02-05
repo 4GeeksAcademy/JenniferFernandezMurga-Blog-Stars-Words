@@ -20,8 +20,8 @@ const addFavorite = () => {
 
   return (
 
-<div className="card" style={{minWidth:"10rem"}}>
-  <img src={`https://starwars-visualguide.com/assets/img/${category}/${id}.jpg`} className="card-img-top" alt="..."/>   
+<div className="card" style={{minWidth:"14rem"}}>
+  <img src={`https://starwars-visualguide.com/assets/img/${category}/${id}.jpg`} className="imagen-img-top" alt="..."/>   
   <div className="card-body">
     <h5 className="card-title">{name}</h5>
     <Link className="btn btn-primary" to={category==="characters" ? "/people/" + id : `/${category}/${id}`}>Learn More!</Link> 

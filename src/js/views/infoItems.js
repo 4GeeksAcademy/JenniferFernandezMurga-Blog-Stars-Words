@@ -1,8 +1,9 @@
 import React, {useEffect, useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router";
-import { CardInfo } from "../component/CardInfo";
-
+import { CardInfoPeople } from "../component/CardInfoPeople";
+import {CardInfoVehicles} from "../component/CardInfoVehicles";
+import {CardInfoPlanets} from "../component/CardInfoPlanets";
 
 export const InfoItems = () => {
 
@@ -37,18 +38,36 @@ export const InfoItems = () => {
 
   return(
     <div>
-        <CardInfo
-        data={infoDetails}  //NO PUEDO PASAR AL CARDINFO COMO PARAMETRO DATA UN OBJETO, COMO ES INFODETAILS.
-        id={id}
-        category={category} //NO PUEDO PASAR LAS FOTOS DEL ENLACE PROPORCIONADO COMO PEOPLE, PORQUE VIENEN COMO CHARACTERS Y 
-        // ASÍ LOS COGE EL CATEGORY (USEPARAMS),PERO AL TENERLOS COMO CHARACTERES Y NO COMO PEOPLE QUE ES COMO VIENE EN LA API NO ME 
-        // PASA LA INFORMACION
-        // name={infoDetails.properties.name}
-        // propiedad1={infoDetails.properties.}
-        // propiedad1={}
-        // propiedad1={}
-
-        />
-    </div>
+           {(() => {
+                        switch (category) {
+                            case 'people':
+                                return (
+                                    <CardInfoPeople
+                                        data={infoDetails}
+                                        id={id}
+                                        category={category}
+                                    />
+                                );
+                            case 'planets':
+                                return (
+                                    <CardInfoPlanets
+                                        data={infoDetails}
+                                        id={id}
+                                        category={category}
+                                    />
+                                );
+                            case 'vehicles':
+                                return (
+                                    <CardInfoVehicles
+                                        data={infoDetails}
+                                        id={id}
+                                        category={category}
+                                    />
+                                );
+                            default:
+                                return null; // O un componente por defecto si es necesario
+                        }
+                    })()}
+            </div>
   );
 }
