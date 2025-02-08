@@ -4,7 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
            characters:[],
 		   planets:[],
 		   vehicles:[],
-		favorite:[],
+		isFavorited:[],
 		
 		
 
@@ -160,7 +160,47 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// },
 
+		
+			addFavorite: (name) => {
+				setStore((prevStore) => ({
+				  ...prevStore,
+				  favorites: [...prevStore.favorites, name], // Agrega el nombre al array de favoritos
+				}));
+			  }
+			  ,
 
+			  removeFavorite: (name) => {
+				setStore((prevStore) => ({
+				  ...prevStore,
+				  favorites: prevStore.favorites.filter(favorite => favorite !== name), // Elimina el nombre del array de favoritos
+				}));
+			  },
+			}
+			
+			// removeFavorite: (id) => {
+			// // 	const store = getStore(); // Obtenemos el estado actual de la tienda
+			// 	const updatedFavorites = store.favorites.filter((fav) => fav.uid !== uid); // Filtramos los favoritos para excluir el item con el uid dado
+			// 	setStore({ favorites: updatedFavorites }); // Actualizamos el estado
+			// },
+			,
+
+			toggleFavorite: (item) => {
+				const store = getStore(); // Obtiene el estado actual
+				const exists = store.favorites.find((fav) => fav.name === item.name); // Verifica si el favorito ya existe
+		
+				if (exists) {
+				  // Si el favorito existe, lo elimina del array
+				  setStore({
+					favorites: store.favorites.filter((fav) => fav.name !== item.name),
+				  });
+				} else {
+				  // Si no existe, lo agrega al array
+				  setStore({
+					favorites: [...store.favorites, item],
+				  });
+				}
+			  }
+			  ,
 
 			changeColor: (index, color) => {
 				//get the store
@@ -178,6 +218,5 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}
 		}
 	};
-};
 
 export default getState;

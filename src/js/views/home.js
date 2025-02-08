@@ -28,8 +28,8 @@ export const Home = () => {
 
 		<div className="vista">
 
-			<h1 className="characters">characters</h1>
-			<div className="cards d-flex overflow-auto">
+			<h1 className="characters">Characters</h1>
+			<div className="cards d-flex overflow-auto m-4">
 			
 			{store.characters.map((characters, index) => {
 				return(
@@ -45,7 +45,7 @@ export const Home = () => {
 
 
 			<h1 className="Planets">Planets</h1>
-			<div className="cards d-flex overflow-auto">
+			<div className="cards d-flex overflow-auto m-4">
 
 			{store.planets.map((planets, index) => {
 				return(
@@ -60,7 +60,7 @@ export const Home = () => {
 
 
 			<h1 className="Vehicles">Vehicles</h1>
-			<div className="cards d-flex overflow-auto">
+			<div className="cards d-flex overflow-auto m-4">
 
 			{store.vehicles.map((vehicles, index) => {
 				return(

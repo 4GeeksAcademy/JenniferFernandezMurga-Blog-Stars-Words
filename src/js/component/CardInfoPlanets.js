@@ -13,14 +13,14 @@ export const CardInfoPlanets = ({data,category,id}) => {
 
   return(
 
-    <div className="card mb-3" style={{width:"100%"}}>
+    <div className="card mb-3">
   <div className="row g-0">
-    <div className="col-md-4">
+    <div className="detalles col-md-4">
     <img 
        src={id === "1" 
         ? "https://www.google.com/url?sa=i&url=https%3A%2F%2Fstarwars.fandom.com%2Fes%2Fwiki%2FTatooine%2FLeyendas&psig=AOvVaw2vdJ0wFU2EaD_nnVvqlcP3&ust=1738833163797000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKjzpbqYrIsDFQAAAAAdAAAAABAI"
-        : `https://starwars-visualguide.com/assets/img/${category}/${id}.jpg`}className="imagen img-fluid rounded-start"
-      alt="Planeta Tatooine"/>
+        : `https://starwars-visualguide.com/assets/img/${category}/${id}.jpg`}className="fixed-size-image img-fluid"
+      alt=""/>
       </div>
             <div className="col-md-8">
              <div className="card-body">

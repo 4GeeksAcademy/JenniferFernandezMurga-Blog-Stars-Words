@@ -11,34 +11,12 @@ export const CardInfoVehicles = ({data,category,id}) => {
 
   const {store, actions} = useContext(Context);
 
-
-
-  // console.log(category)
-  // const [personData, setPersonData] = useState(null);
-
-  
-  // const fetchPersonData = async () => {
-  //   try {
-  //     const response = await fetch(`https://www.swapi.tech/api/${}/${id}`);
-  //     if (!response.ok) {
-  //       throw new Error(`HTTP error! status: ${response.status}`);
-  //     }
-  //     const data = await response.json();
-  //     setPersonData(data);
-  //     console.log(data); // Para ver la respuesta en la consola
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error);
-  //   }
-  // };
-
-
   return(
 
     <div className="card mb-3" style={{width:"100%"}}>
   <div className="row g-0">
-    <div className="col-md-4">
-      <img src={`https://starwars-visualguide.com/assets/img/${category === "characters" ? "people" : category}/${id}.jpg`} className="imagen imcarg-fluid rounded-start" alt="..."/>
-      {/* <Link className="btn btn-primary" to={category==="characters" ? "/people/" + id : `/${category}/${id}`}>Learn More!</Link>  */}
+    <div className="detalles col-md-4">
+      <img src={`https://starwars-visualguide.com/assets/img/${category === "characters" ? "people" : category}/${id}.jpg`} className="imcarg-fluid rounded-start" alt="..."/>
     </div>
     <div className="col-md-8">
       <div className="card-body">

@@ -6,12 +6,8 @@
     overflow-y: hidden;
     overflow-x: scroll;
         
-    white-space:nowrap
+    white-space:nowrap;
+    background-color: black;
     
 }
 
-/* div.card{
-    width: 300px;
-    height: 200px;
-
-} */
