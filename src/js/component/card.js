@@ -11,21 +11,12 @@ export const Card = ({id,name,category}) => {
 
 const { store, actions } = useContext(Context); 
 
-const [isFavorited, setIsFavorited] = useState(false); //Esto hay que meterlo tambien en STORE? De qué forma?
+const [favorites, setFavorites] = useState(false); 
+
+const isFavorite = store.favorites.some((fav) => fav.id === id && fav.category === category);
 
 const handleFavorite = () => {
-  actions.toggleFavorite({id,name,category}); // Llama a toggleFavorite para agregar o eliminar el elemento
-};
-
-const addFavorite = () => {
-  setIsFavorited(!isFavorited);
-  if (!isFavorited) {
-    // Si se marca como favorito, añade el nombre al contexto
-    actions.addFavorite(name); 
-  } else {
-    // Si se desmarca como favorito, elimina el nombre del contexto
-    actions.removeFavorite(name); 
-  }
+  actions.toggleFavorite({ name, id, category });
 };
 
   return (
@@ -35,25 +26,13 @@ const addFavorite = () => {
   <div className="card-body">
     <h5 className="card-title">{name}</h5>
     <Link className="btn btn-primary" to={category==="characters" ? "/people/" + id : `/${category}/${id}`}>Learn More!</Link> 
-    <button className="favorite mx-5 bg-warning" onClick={addFavorite}>
-            {isFavorited ? (
-          <span role="img" aria-label="favorited">❤️</span> // Corazón lleno
-        ) : (
-          <span role="img" aria-label="not-favorited">🤍</span> // Corazón vacío
-        )}
-            {/* Icono del corazón que cambia según el estado de favorito */}
-            {/* <i className={`fa-${isFavorited ? "solid" : "regular"} fa-heart`}></i> */}
+          <button
+            onClick={handleFavorite}
+            className={`btn ms-2 ${isFavorite ? "btn-warning" : "btn-warning"}`}
+          >
+          
+            <i className={`fa-${isFavorite ? "solid" : "regular"} fa-heart`}></i>
           </button>
-    {/* <button className="favorite mx-5" onClick={addFavorite}>
-        {isFavorited ? (
-          <span role="img" aria-label="favorited">❤️</span> // Corazón lleno
-        ) : (
-          <span role="img" aria-label="not-favorited">🤍</span> // Corazón vacío
-        )}
-    </button> */}
-
-
-
   </div>
 </div>
 

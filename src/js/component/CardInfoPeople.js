@@ -14,13 +14,14 @@ export const CardInfoPeople = ({data,category,id}) => {
 
   return(
 
-    <div className="card mb-3" style={{width:"100%"}}>
+    <div className="card m-5 justify-content-center " style={{width:"90%",height:"400px"}}>
      <div className="row g-0">
         <div className="detalles col-md-4">
-          <img src={`https://starwars-visualguide.com/assets/img/${category === "people" ? "characters" : category}/${id}.jpg`} className="imcarg-fluid rounded-start" alt="..."/>
+          <img src={`https://starwars-visualguide.com/assets/img/${category === "people" ? "characters" : category}/${id}.jpg`} className="imcarg-fluid rounded-start" style={{width:"300px",height:"400px"}}alt="..."/>
        </div>
     <div className="col-md-8">
       <div className="card-body">
+      <h4 className="title"><strong>{data.properties?.name}</strong></h4>
         <ul>
             <li><strong>Height:</strong> {data.properties?.height}</li>
              <li><strong>Mass:</strong> {data.properties?.mass}</li>
