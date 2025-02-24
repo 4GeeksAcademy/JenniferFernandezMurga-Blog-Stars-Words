@@ -4,8 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
            characters:[],
 		   planets:[],
 		   vehicles:[],
-		// isFavorited:[],
-		favorites:[],
+		favorites:[]
 		
 		
 
@@ -16,106 +15,60 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
-
-			getcharacters: () => {
+			getCharacters: async () => {
 				const requestOptions = {
 					method: "GET",
 					redirect: "follow"
-				  };
-				  
-				  fetch("https://www.swapi.tech/api/people/", requestOptions)
-					.then((response) => response.json())
-					// Usar este ejemplo para setearlo, con setStore({ demo: demo });
-					.then((data) => setStore({characters:data.results}))
-					.catch((error) => console.error(error));
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+				};
+			
+				try {
+					const response = await fetch("https://www.swapi.tech/api/people/", requestOptions);
+					if (!response.ok) {
+						throw new Error('Network response was not ok ' + response.statusText);
+					}
+					const data = await response.json();
+					setStore({ characters: data.results });
+				} catch (error) {
+					console.error('Fetch error: ', error);
+				}
 			},
 			
-			getPlanets: () =>{
+			getPlanets: async () => {
 				const requestOptions = {
 					method: "GET",
 					redirect: "follow"
-				  };
-				  
-				  fetch("https://www.swapi.tech/api/planets/", requestOptions)
-					.then((response) => response.json())
-					.then((data) => setStore({planets:data.results}))
-					.catch((error) => console.error(error));
-				},
-
-			getVehicles: () => {
-					const requestOptions = {
-						method: "GET",
-						redirect: "follow"
-					  };
-					  
-					  fetch("https://www.swapi.tech/api/vehicles/", requestOptions)
-						.then((response) => response.json())
-						.then((data) => setStore({vehicles:data.results}))
-						.catch((error) => console.error(error));
-				},
-
-				//Este fetch envía la información a la CardInfo de los 3 grupos
-
-				//   getInfoDetails: async ()=>{
-				// 	const requestOptions = {
-				// 	  method: "GET",
-				// 	  redirect: "follow"
-				// 	};
-					
-				// 	try {
-				// 	  const response = await fetch(`https://www.swapi.tech/api/${category}/${id}`, requestOptions);
-				// 	  const data = await response.json()
-				// 	setInfoDetails(data.result)
-				//   console.log(data.result);
-				// 	} catch (error) {
-				// 	console.error(error);
-				//    };
-				//   }
-					// ,
-		
-			// addFavorite: (name) => {
-			// 	setStore((prevStore) => ({
-			// 	  ...prevStore,
-			// 	  favorites: [...prevStore.favorites, name], // Agrega el nombre al array de favoritos
-			// 	}));
-			//   }
-			//   ,
-
-			//   removeFavorite: (name) => {
-			// 	setStore((prevStore) => ({
-			// 	  ...prevStore,
-			// 	  favorites: prevStore.favorites.filter(favorite => favorite !== name), // Elimina el nombre del array de favoritos
-			// 	}));
-			//   },
-			// }
+				};
 			
-			// removeFavorite: (id) => {
-			// // 	const store = getStore(); // Obtenemos el estado actual de la tienda
-			// 	const updatedFavorites = store.favorites.filter((fav) => fav.uid !== uid); // Filtramos los favoritos para excluir el item con el uid dado
-			// 	setStore({ favorites: updatedFavorites }); // Actualizamos el estado
-			// },
-			
+				try {
+					const response = await fetch("https://www.swapi.tech/api/planets/", requestOptions);
+					if (!response.ok) {
+						throw new Error('Network response was not ok ' + response.statusText);
+					}
+					const data = await response.json();
+				
+					setStore({ planets: data.results });
+				} catch (error) {
+					console.error('Fetch error: ', error);
+				}
+			},
 
-			// toggleFavorite: (item) => {
-			// 	const store = getStore(); // Obtiene el estado actual
-			// 	const exists = store.favorites.find((fav) => fav.name === item.name); // Verifica si el favorito ya existe
-		
-			// 	if (exists) {
-			// 	  // Si el favorito existe, lo elimina del array
-			// 	  setStore({
-			// 		favorites: store.favorites.filter((fav) => fav.name !== item.name),
-			// 	  });
-			// 	} else {
-			// 	  // Si no existe, lo agrega al array
-			// 	  setStore({
-			// 		favorites: [...store.favorites, item],
-			// 	  });
-			// 	}
-			//   }
-			//   ,
+			getVehicles: async () => {
+				const requestOptions = {
+					method: "GET",
+					redirect: "follow"
+				};
+			
+				try {
+					const response = await fetch("https://www.swapi.tech/api/vehicles/", requestOptions);
+					if (!response.ok) {
+						throw new Error('Network response was not ok ' + response.statusText);
+					}
+					const data = await response.json();
+					setStore({ vehicles: data.results });
+				} catch (error) {
+					console.error('Fetch error: ', error);
+				}
+			},
 
 			// Función para agregar o eliminar favoritos
 		toggleFavorite: (item) => {

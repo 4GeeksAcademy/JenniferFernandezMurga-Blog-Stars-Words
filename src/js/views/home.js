@@ -9,7 +9,7 @@ export const Home = () => {
 	const { store, actions } = useContext(Context); 
 
 			useEffect(()=>{
-				actions.getcharacters()
+				actions.getCharacters()
 				},[])
 
 			useEffect(()=>{
@@ -20,7 +20,7 @@ export const Home = () => {
 				actions.getVehicles()
 				},[])
 
-			//Cual es la mejor forma de añadir mas de una función dentro de useEffect??
+	
 
 			
 
@@ -28,7 +28,7 @@ export const Home = () => {
 
 		<div className="vista">
 
-			<h1 className="characters">Characters</h1>
+			<h1 className="characters m-3">Characters</h1>
 			<div className="cards d-flex overflow-auto m-4">
 			
 			{store.characters.map((characters, index) => {
@@ -38,13 +38,11 @@ export const Home = () => {
 			  	category={"characters"} 
              	id={characters.uid} 
              	key={index}/>
-              // Usamos el índice del contacto como clave para optimizar el renderizado.
-           
-				);
+        	);
 	  		})}</div>
 
 
-			<h1 className="Planets">Planets</h1>
+			<h1 className="Planets m-3">Planets</h1>
 			<div className="cards d-flex overflow-auto m-4">
 
 			{store.planets.map((planets, index) => {
@@ -54,12 +52,11 @@ export const Home = () => {
 			  	category={"planets"} 
              	id={planets.uid} 
              	key={index} />
-              // Usamos el índice del contacto como clave para optimizar el renderizado.
-        		);
+        	);
 	  		})}</div>
 
 
-			<h1 className="Vehicles">Vehicles</h1>
+			<h1 className="Vehicles m-3">Vehicles</h1>
 			<div className="cards d-flex overflow-auto m-4">
 
 			{store.vehicles.map((vehicles, index) => {
@@ -69,9 +66,7 @@ export const Home = () => {
 			  	category={"vehicles"} 
              	id={vehicles.uid} 
              	key={index}/>
-              // Usamos el índice del contacto como clave para optimizar el renderizado.
-          	 
-				);
+             );
 	 		 })}</div>
 	</div>
 );

@@ -55,7 +55,7 @@ export const CardInfoPeople = ({data,category,id}) => {
                 <li>
                   <strong>Id:</strong> {data._id}
                 </li>
-              </ul>/
+              </ul>
 
       </div>
     </div>

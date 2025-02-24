@@ -32,7 +32,7 @@ export const InfoItems = () => {
 
 
   useEffect(() => {
-  getInfoDetails(); // Llama a la acción para cargar los personajes
+  getInfoDetails();
   }, []);
 
 
@@ -65,7 +65,7 @@ export const InfoItems = () => {
                                     />
                                 );
                             default:
-                                return null; // O un componente por defecto si es necesario
+                                return null; 
                         }
                     })()}
             </div>

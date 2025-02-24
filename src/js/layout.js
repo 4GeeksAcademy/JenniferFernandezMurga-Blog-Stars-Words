@@ -25,10 +25,8 @@ const Layout = () => {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/:category/:id" element={<InfoItems />} />
-						{/* //el useParams coge la información de la url esta*/}
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
-					{/* <Footer /> */}
 				</ScrollToTop>
 			</BrowserRouter>
 		</div>
